@@ -24,3 +24,10 @@ services:
     container_name: knut-red
     ports:
       - 9091:8080
+
+  blue:
+    build: ./blue
+    image: knut-blue
+    container_name: knut-blue
+    ports:
+      - 9092:8080

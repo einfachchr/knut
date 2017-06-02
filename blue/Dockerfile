@@ -1,6 +1,6 @@
 FROM openjdk:8-jdk
 
-ADD target/red-0.1.0.jar /app.jar
+ADD target/blue-0.1.0.jar /app.jar
 
 ENV JAVA_OPTS=""
 
