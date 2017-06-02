@@ -1,5 +1,5 @@
 # Knut #
-![picture alt](https://de.wikipedia.org/wiki/Knut_(Eisb%C3%A4r)#/media/File:Knut_IMG_8095.jpg "Das Maskottchen")
+![picture alt](https://de.wikipedia.org/wiki/Knut_(Eisbär)#/media/File:Knut_IMG_8095.jpg "Das Maskottchen")
 
 
 ## 1. Stufe: ##
