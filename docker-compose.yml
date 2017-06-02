@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+
+  #
+  #proxy:
+
+    #build: ./proxy
+    #image: nps-proxy:latest
+    #container_name: nps-proxy
+    #ports:
+  #    - "9090:80"
+
+
+  #  depends_on:
+  #    - greeter
+
+  #
+  # docker build setzt voraus, dass ein jar in target existiert...
+  # also mvn package vorher laufen lassen
+  red:
+    build: ./red
+    image: knut-red
+    container_name: knut-red
+    ports:
+      - 9091:8080
