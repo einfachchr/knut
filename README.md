@@ -32,6 +32,10 @@
     FERTIG Namensänderung
 
   OFFEN nginx
+    FERTIG green
+    FERTIG Welcome-Seite
+    FERTIG Mapping s. o.
 
-  OFFEN Integration
-    OFFEN iframe muss auf den entsprechenden Content-Endpunkt zeigen
+  FERTIG Integration
+    FERTIG iframe muss auf den entsprechenden Content-Endpunkt zeigen
+    FERTIG nur Content ausliefern, nicht das obere Menü

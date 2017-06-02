@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>404</title>
+</head>
+<body>
+    <h1>Sorry for that</h1>
+    <div>requestURI: <p th:text="${#httpServletRequest.requestURI}">1</p></div>
+    <div>contextPath: <p th:text="${#httpServletRequest.contextPath}">1</p></div>
+    <div>pathInfo: <p th:text="${#httpServletRequest.pathInfo}">1</p></div>
+    <div>queryString: <p th:text="${#httpServletRequest.queryString}">1</p></div>
+    <div>servletPath: <p th:text="${#httpServletRequest.servletPath}">1</p></div>
+</body>
+</html>

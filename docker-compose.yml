@@ -2,18 +2,18 @@ version: "3"
 
 services:
 
-  #
-  #proxy:
+  # Proxy
+  green:
+    build: ./green
+    image: knut-green:latest
+    container_name: knut-green
+    ports:
+      - "9090:80"
 
-    #build: ./proxy
-    #image: nps-proxy:latest
-    #container_name: nps-proxy
-    #ports:
-  #    - "9090:80"
 
-
-  #  depends_on:
-  #    - greeter
+    depends_on:
+      - red
+      - blue
 
   #
   # docker build setzt voraus, dass ein jar in target existiert...
@@ -24,6 +24,7 @@ services:
     container_name: knut-red
     ports:
       - 9091:8080
+
 
   blue:
     build: ./blue
