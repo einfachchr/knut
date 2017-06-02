@@ -1,5 +1,6 @@
 # Knut #
-![picture alt](https://de.wikipedia.org/wiki/Knut_(Eisbär)#/media/File:Knut_IMG_8095.jpg "Das Maskottchen")
+![alt text][logo]
+[logo]: https://de.wikipedia.org/wiki/Knut_(Eisbär)#/media/File:Knut_IMG_8095.jpg "Das Maskottchen"
 
 
 ## 1. Stufe: ##
@@ -18,19 +19,19 @@
 * fixe Links tauschen den iframe
 
 ### Schritte ###
-  [X] red
-    [X] Greeter kopieren
-    [X] Routing auf / ändern
-    [X] Template auf Rahmen ändern
-    [X] HEADER dumpen
-    [X] Request-Parameter dumpen
-    [X] Dockerfile
-    [X] docker-compose.yml
+  FERTIG red
+    FERTIG Greeter kopieren
+    FERTIG Routing auf / ändern
+    FERTIG Template auf Rahmen ändern
+    FERTIG HEADER dumpen
+    FERTIG Request-Parameter dumpen
+    FERTIG Dockerfile
+    FERTIG docker-compose.yml
 
-  [ ] cp red -> blue
-    [ ] Namensänderung
+  FERTIG cp red -> blue
+    FERTIG Namensänderung
 
-  [ ] nginx
+  OFFEN nginx
 
-  [ ] Integration
-    [ ] iframe muss auf den entsprechenden Content-Endpunkt zeigen
+  OFFEN Integration
+    OFFEN iframe muss auf den entsprechenden Content-Endpunkt zeigen
