@@ -31,7 +31,7 @@
   FERTIG cp red -> blue
     FERTIG Namensänderung
 
-  OFFEN nginx
+  FERTIG nginx
     FERTIG green
     FERTIG Welcome-Seite
     FERTIG Mapping s. o.
@@ -39,3 +39,9 @@
   FERTIG Integration
     FERTIG iframe muss auf den entsprechenden Content-Endpunkt zeigen
     FERTIG nur Content ausliefern, nicht das obere Menü
+
+  FERTIG Green in golang-Router umbauen
+    FERTIG nginx durch go router ersetzen
+    FERTIG URLS/ Routen definieren
+
+  OFFEN IFrames durch Copy&Paste ersetzen
