@@ -1,25 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
-<html lang="de" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <title>Red</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-<h1>Red</h1>
-<div id="header">
-    <table>
-        <tr th:each="header : ${headers}">
-            <td th:text="${header}">1</td>
-        </tr>
-    </table>
+<div id="main">
+    <h1>Red</h1>
+    <div id="header">
+        <table>
+            <tr th:each="header : ${headers}">
+                <td th:text="${header}">1</td>
+            </tr>
+        </table>
+    </div>
+    <div id="reqestparameter">
+        <table>
+            <tr th:each="rp : ${requestParameter}">
+                <td th:text="${rp}">1</td>
+            </tr>
+        </table>
+    </div>
 </div>
-<div id="reqestparameter">
-    <table>
-        <tr th:each="rp : ${requestParameter}">
-            <td th:text="${rp}">1</td>
-        </tr>
-    </table>
-</div>
-</body>
-</html>

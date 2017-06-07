@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"text/template"
@@ -12,8 +14,8 @@ import (
 const (
 	// In der IFrame-Lösung müssen wir über die im docker-compose.yml konfigurierten Host-Ports gehen, da der Browser
 	// das IFrame füllt. Hübsch häßlich...
-	constRedURL  = "http://localhost:9091" //"http://red:8080"
-	constBlueURL = "http://localhost:9092" //"http://blue:8080"
+	constRedURL  = "http://red:8080"  //"http://localhost:9091" //"http://red:8080"
+	constBlueURL = "http://blue:8080" //"http://localhost:9092" //"http://blue:8080"
 )
 
 type MyRouter struct {
@@ -22,7 +24,7 @@ type MyRouter struct {
 }
 
 type RoutingParams struct {
-	IFrameTarget string
+	Content string
 }
 
 func main() {
@@ -51,7 +53,12 @@ func (self *MyRouter) router() *mux.Router {
 
 // Zeigt die Index-Seite
 func (self *MyRouter) RootHandler(resp http.ResponseWriter, req *http.Request) {
-	self.FrameTemplate.Execute(resp, RoutingParams{IFrameTarget: "/welcome.html"})
+	var welcome bytes.Buffer
+	var err = self.WelcomePage.Execute(&welcome, nil)
+	if err != nil {
+		panic(err)
+	}
+	self.FrameTemplate.Execute(resp, RoutingParams{Content: welcome.String()})
 }
 
 func (self *MyRouter) WelcomeHandler(resp http.ResponseWriter, req *http.Request) {
@@ -59,13 +66,19 @@ func (self *MyRouter) WelcomeHandler(resp http.ResponseWriter, req *http.Request
 }
 
 func (self *MyRouter) RedHandler(resp http.ResponseWriter, req *http.Request) {
-	log.Printf("[ROUTER] iframe for %s\n", constRedURL)
-	self.FrameTemplate.Execute(resp, RoutingParams{IFrameTarget: constRedURL})
+	log.Printf("[RedHandler] request for %s", constRedURL)
+	var content = self.getContent(req, constRedURL)
+	log.Printf("[RedHandler] got: %s", content)
+
+	self.FrameTemplate.Execute(resp, RoutingParams{Content: content})
 }
 
 func (self *MyRouter) BlueHandler(resp http.ResponseWriter, req *http.Request) {
-	log.Printf("[ROUTER] iframe for %s\n", constBlueURL)
-	self.FrameTemplate.Execute(resp, RoutingParams{IFrameTarget: constBlueURL})
+	log.Printf("[RedHandler] request for %s", constBlueURL)
+	var content = self.getContent(req, constBlueURL)
+	log.Printf("[RedHandler] got: %s", content)
+
+	self.FrameTemplate.Execute(resp, RoutingParams{Content: content})
 }
 
 //
@@ -88,4 +101,23 @@ func (self *MyRouter) loadWelcomePage() {
 	templ = template.Must(template.ParseFiles("welcome.html"))
 
 	self.WelcomePage = templ
+}
+
+//
+// ------------------------ GET-Requests ins Backend
+//
+func (self *MyRouter) getContent(req *http.Request, target string) string {
+	fmt.Printf("[GET] request-url: %#v\n", req.URL)
+	fmt.Printf("[GET] request-header: %#v\n", req.Header)
+	resp, err := http.Get(target)
+	if err != nil {
+		return fmt.Sprintf("got error while GET: %s", err)
+	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return fmt.Sprintf("got error while reading response body: %s", err)
+	}
+
+	return string(body)
 }

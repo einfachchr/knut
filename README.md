@@ -44,4 +44,6 @@
     FERTIG nginx durch go router ersetzen
     FERTIG URLS/ Routen definieren
 
-  OFFEN IFrames durch Copy&Paste ersetzen
+  FERTIG IFrames durch Copy&Paste ersetzen
+    FERTIG Willkommen-Seite einfach einkopieren
+    FERTIG router muss ein GET zum Ziel-Service machen
